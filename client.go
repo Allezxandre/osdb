@@ -76,6 +76,16 @@ func (c *Client) FileSearch(path string, langs []string) (Subtitles, error) {
 	return c.SearchSubtitles(params)
 }
 
+// FileReaderSearch searches subtitles for a reader and list of languages.
+func (c *Client) FileReaderSearch(reader io.ReadSeeker, size uint64, langs []string) (Subtitles, error) {
+	// Hash file, and other params values.
+	params, err := c.fileReaderToSearchParams(reader, size, langs)
+	if err != nil {
+		return nil, err
+	}
+	return c.SearchSubtitles(params)
+}
+
 // IMDBSearchByID searches subtitles that match some IMDB IDs.
 func (c *Client) IMDBSearchByID(ids []string, langs []string) (Subtitles, error) {
 	// OSDB search params struct
@@ -408,6 +418,29 @@ func (c *Client) fileToSearchParams(path string, langs []string) (*[]interface{}
 		}{{
 			hashString(h),
 			size,
+			strings.Join(langs, ","),
+		}},
+	}
+	return &params, nil
+}
+
+// Build query parameters for hash-based movie search.
+func (c *Client) fileReaderToSearchParams(reader io.ReadSeeker, size uint64, langs []string) (*[]interface{}, error) {
+	// File hash
+	h, err := HashReader(reader, size)
+	if err != nil {
+		return nil, err
+	}
+
+	params := []interface{}{
+		c.Token,
+		[]struct {
+			Hash  string `xmlrpc:"moviehash"`
+			Size  int64  `xmlrpc:"moviebytesize"`
+			Langs string `xmlrpc:"sublanguageid"`
+		}{{
+			hashString(h),
+			int64(size),
 			strings.Join(langs, ","),
 		}},
 	}

@@ -12,7 +12,9 @@ import (
 	"fmt"
 	"os"
 
+	"errors"
 	"github.com/kolo/xmlrpc"
+	"io"
 )
 
 const (
@@ -60,6 +62,10 @@ func HashFile(file *os.File) (hash uint64, err error) {
 		return
 	}
 
+	return hashFromBuffer(buf, uint64(fi.Size()))
+}
+
+func hashFromBuffer(buf []byte, fileSize uint64) (hash uint64, err error) {
 	// Convert to uint64, and sum.
 	var nums [(ChunkSize * 2) / 8]uint64
 	reader := bytes.NewReader(buf)
@@ -71,7 +77,33 @@ func HashFile(file *os.File) (hash uint64, err error) {
 		hash += num
 	}
 
-	return hash + uint64(fi.Size()), nil
+	return hash + fileSize, nil
+}
+
+func HashReader(reader io.ReadSeeker, size uint64) (hash uint64, err error) {
+	buf1 := make([]byte, ChunkSize)
+	buf2 := make([]byte, ChunkSize)
+	// read Head
+	reader.Seek(0, io.SeekStart)
+	n, err := reader.Read(buf1)
+	if err != nil && err != io.EOF {
+		return
+	}
+	if n == 0 {
+		return hash, errors.New("unable to compute hash from reader that read 0 bytes")
+	}
+	// read Tail
+	reader.Seek(-ChunkSize, io.SeekEnd)
+	n, err = reader.Read(buf2)
+	if err != nil && err != io.EOF {
+		return
+	}
+	if n == 0 {
+		return hash, errors.New("unable to compute hash from reader that read 0 bytes")
+	}
+	buffer := append(buf1, buf2...)
+
+	return hashFromBuffer(buffer, size)
 }
 
 // Hash generates an OSDB hash for a file.
