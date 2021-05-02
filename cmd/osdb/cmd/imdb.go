@@ -6,7 +6,7 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"github.com/oz/osdb"
+	"github.com/allezxandre/osdb"
 	"github.com/spf13/cobra"
 )
 

@@ -7,8 +7,8 @@ import (
 	"os"
 	"path"
 
+	"github.com/allezxandre/osdb"
 	"github.com/h2non/filetype"
-	"github.com/oz/osdb"
 	"github.com/spf13/cobra"
 )
 

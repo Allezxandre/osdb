@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/oz/osdb"
+	"github.com/allezxandre/osdb"
 	"github.com/spf13/cobra"
 )
 

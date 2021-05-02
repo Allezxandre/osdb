@@ -1,0 +1,14 @@
+github.com/h2non/filetype v1.0.3 h1:Z+l/DVnZvMo/IjjZsDVt+O7ms4uDhpSLyOflJlm9/ik=
+github.com/h2non/filetype v1.0.3/go.mod h1:isekKqOuhMj+s/7r3rIeTErIRy4Rub5uBWHfvMusLMU=
+github.com/inconshreveable/mousetrap v1.0.0 h1:Z8tu5sraLXCXIcARxBp/8cbvlwVa7Z1NHg9XEKhtSvM=
+github.com/inconshreveable/mousetrap v1.0.0/go.mod h1:PxqpIevigyE2G7u3NXJIT2ANytuPF1OarO4DADm73n8=
+github.com/kolo/xmlrpc v0.0.0-20150413191830-0826b98aaa29 h1:A9Cxbd2chMbJwYR6WpWelyovi0v8Pv4xTUc64pO1gxE=
+github.com/kolo/xmlrpc v0.0.0-20150413191830-0826b98aaa29/go.mod h1:o03bZfuBwAXHetKXuInt4S7omeXUu62/A845kiycsSQ=
+github.com/spf13/cobra v0.0.2-0.20171029210945-b3426bbac13d h1:AJlxixwSeFKp9sLt8hmwOwj8xKng8IUF0hIyaWHQK/M=
+github.com/spf13/cobra v0.0.2-0.20171029210945-b3426bbac13d/go.mod h1:1l0Ry5zgKvJasoi3XT1TypsSe7PqH0Sj9dhYf7v3XqQ=
+github.com/spf13/pflag v1.0.0 h1:oaPbdDe/x0UncahuwiPxW1GYJyilRAdsPnq3e1yaPcI=
+github.com/spf13/pflag v1.0.0/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnInEg4=
+golang.org/x/text v0.1.1-0.20171102192421-88f656faf3f3 h1:OxMYHd6bm+jH+TI7NBCb/CaYk6pMJnBC8GIzIi68Hk4=
+golang.org/x/text v0.1.1-0.20171102192421-88f656faf3f3/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+gopkg.in/h2non/filetype.v1 v1.0.3 h1:EhZ9p3H8eDdFHiKljxJ59EeQ9Pu88wrgY7/B1WRK/VE=
+gopkg.in/h2non/filetype.v1 v1.0.3/go.mod h1:M0yem4rwSX5lLVrkEuRRp2/NinFMD5vgJ4DlAhZcfNo=

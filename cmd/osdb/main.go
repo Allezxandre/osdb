@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/oz/osdb/cmd/osdb/cmd"
+	"github.com/allezxandre/osdb/cmd/osdb/cmd"
 )
 
 func main() {
